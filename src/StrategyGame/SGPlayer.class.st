@@ -43,3 +43,13 @@ SGPlayer >> map [
 SGPlayer >> map: anObject [
 	map := anObject
 ]
+
+{ #category : #'as yet unclassified' }
+SGPlayer >> ownPlanets [
+	^ map planets select: [ :p | p owner == self ]
+]
+
+{ #category : #initialization }
+SGPlayer >> setUp [
+	"do nothing"
+]

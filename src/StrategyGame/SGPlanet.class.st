@@ -4,7 +4,9 @@ Class {
 	#instVars : [
 		'inhabitants',
 		'owner',
-		'position'
+		'position',
+		'graphicalElement',
+		'graphicalLabel'
 	],
 	#category : #StrategyGame
 }
@@ -17,6 +19,26 @@ SGPlanet >> color [
 { #category : #'as yet unclassified' }
 SGPlanet >> endTurn [
 	owner actOn: self
+]
+
+{ #category : #accessing }
+SGPlanet >> graphicalElement [
+	^ graphicalElement
+]
+
+{ #category : #accessing }
+SGPlanet >> graphicalElement: anObject [
+	graphicalElement := anObject
+]
+
+{ #category : #accessing }
+SGPlanet >> graphicalLabel [
+	^ graphicalLabel
+]
+
+{ #category : #accessing }
+SGPlanet >> graphicalLabel: anObject [
+	graphicalLabel := anObject
 ]
 
 { #category : #accessing }

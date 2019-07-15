@@ -46,9 +46,23 @@ SGMap >> open [
 	v addAll: planetElements.
 	labels := RTLabel new color: Color black; text: #inhabitants; elementsOn: planets.
 	v addAll: labels.
-	planetElements with: labels do: [ :p :l | p translateTo: p model position. l translateTo: p model position ].
+	planetElements with: labels do: [ :p :l | 
+		p model graphicalElement: p; graphicalLabel: l.
+		p translateTo: p model position. 
+		l translateTo: p model position ].
 	v addMenu: 'End turn' callback: [ self endTurn. v signalUpdate ].
+	self players do: #setUp.
 	^ v open
+]
+
+{ #category : #accessing }
+SGMap >> planets [
+	^ planets
+]
+
+{ #category : #accessing }
+SGMap >> players [
+	^ players
 ]
 
 { #category : #'as yet unclassified' }
@@ -58,7 +72,7 @@ SGMap >> scenario1 [
 	"
 	| player1 player2 home1 home2 p1 p2 |
 	player1 := SGPlayer new color: Color purple.
-	player2 := SGPlayer new color: Color green.
+	player2 := SGHuman new color: Color green.
 	home1 := SGPlanet new inhabitants: 10; position: -100 @ 0; owner: player1.
 	home2 := SGPlanet new inhabitants: 10; position: 100 @ 0; owner: player2.
 	p1 := SGPlanet new inhabitants: 5; position: 0 @ -40.
